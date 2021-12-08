@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+spec:
+  rules:
+  - host: khoivn.herokuapp.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /bar
+        backend:
+          service:
+            name: ingress-nginx-controller-admission
+            port:
+              number: 443
