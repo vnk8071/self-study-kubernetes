@@ -1,6 +1,7 @@
 # Kubernets_vnk8071
 
 "Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications."
+
 Source: https://www.youtube.com/watch?v=X48VuDVv0do
 
 ## Install
@@ -50,6 +51,7 @@ Or you can run without vm-driver by
 minikube start --vm-driver=none
 ```
 ## Structure of minukube
+<<<<<<< HEAD
 1. Node: It contain pod and database.
 - Simple server.
 - Physical or virtual machine.
@@ -133,3 +135,6 @@ kubectl get scv
 Open browser with minikube_ip:external_port.
 
 ## Let's try.
+=======
+(To be update soon)
+>>>>>>> 2e3b77bb7ee7e079e5e8c5d3e966e55dfbeccf99
