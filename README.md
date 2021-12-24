@@ -50,4 +50,86 @@ Or you can run without vm-driver by
 minikube start --vm-driver=none
 ```
 ## Structure of minukube
-(To be update soon)
+1. Node: It contain pod and database.
+- Simple server.
+- Physical or virtual machine.
+
+2. Pod: 
+- Abstraction over container. 
+- It is the smallest unit in Kubernetes and familiar with docker containers or container images. 
+
+3. Service: Static or permanent IP address.
+
+4. Ingress: The request of user goes first to ingress and then forward to the service.
+
+5. Config map: External configuration.
+
+6. Secret: Likely config map. It's used to store secret data, username, password. 
+
+7. Volume:
+- Storage on local machine.
+- Remote outside of the K8s cluster.
+
+8. Deployment: Create replicas to mantain pod and database.
+
+## Flow
+First create config map yaml file:
+```bash
+Ex: scripts/mongodb-configmap.yaml
+```
+
+Then create secret yaml file:
+```bash
+Ex: scripts/mongodb-secret.yaml
+```
+Find user and password encode:
+```bash
+echo -n <name>user | base64
+echo -n <name>password | base64
+```
+
+Final create deployment and service yaml file
+```bash
+Ex: scripts/mongodb-deploy.yaml
+```
+- Change the number of replicas to maintain pod and database.
+
+- Deploy for many pods by using labels:
+```bash
+metadata:
+    labels:
+        app: <name>
+```
+
+## Deploy
+Use Kubectl to run with command line.
+
+Check current pod | deployment | service
+```bash
+kubectl get pod
+and 
+kubectl get deployment
+and 
+kubectl get service
+```
+
+Apply manages applications by:
+```bash
+kubectl apply -f scripts/mongodb-configmap.yaml
+```
+Then do the same with secret and deployment yaml file.
+
+Check all apply:
+```bash
+kubectl get all
+```
+
+Final, get ip of minikube and external port to open browser of demo deploy.
+```bash
+minikube ip
+kubectl get scv
+```
+
+Open browser with minikube_ip:external_port.
+
+## Let's try.
